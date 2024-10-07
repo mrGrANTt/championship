@@ -1,0 +1,4 @@
+name: championship
+version: '${project.version}'
+main: vxteam.plugin.championship.Championship
+api-version: '1.21'
