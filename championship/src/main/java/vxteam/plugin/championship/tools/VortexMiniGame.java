@@ -2,10 +2,10 @@ package vxteam.plugin.championship.tools;
 
 import vxteam.plugin.championship.Championship;
 
-public abstract class VortexPlugin {
+public abstract class VortexMiniGame {
 
     //При инициалезации принемает плагин и название файла конфигурации режима
-    public VortexPlugin(Championship plg, String configName){
+    public VortexMiniGame(Championship plg, String configName){
         plg_ = plg;
 
         config_ = new CustomConfig();
