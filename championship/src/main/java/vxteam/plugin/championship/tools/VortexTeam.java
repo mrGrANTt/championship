@@ -20,7 +20,7 @@ public class VortexTeam {
         team_.setSuffix(ChatColor.WHITE.toString());
     }
 
-    public static VortexTeam getTeam(Teams team){
+    public static VortexTeam getTeam(Teams team) {
         return teams[team.ordinal()];
     }
 
