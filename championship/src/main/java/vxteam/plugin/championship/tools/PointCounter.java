@@ -1,5 +1,9 @@
 package vxteam.plugin.championship.tools;
 
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import vxteam.plugin.championship.Championship;
+
 import java.util.function.IntBinaryOperator;
 
 public class PointCounter {
@@ -16,6 +20,27 @@ public class PointCounter {
         return teamsPoints.clone();
 
     }
+
+    public static void getGlobalWiners(Championship plg) {
+        //получаем локацию для телепортации
+        Location loc = Vector3.StringToLocation(plg.getConfig().getString("win-location"), plg.getServer().getWorld("world"));
+
+        // решаем кто победил
+        int maxIndex = globalTeamsPoints.length - 1;
+        for (int i = globalTeamsPoints.length - 2; i >= 0; i--) {
+            if(globalTeamsPoints[i] > globalTeamsPoints[maxIndex]){
+                maxIndex = i;
+            }
+        }
+
+        //телепортируем каждого из них
+        VortexTeam.getTeam(Teams.ofIndex(maxIndex)).getVanilaTeam().getPlayers().forEach((p) -> {
+            if(p.isConnected()){
+                p.getPlayer().teleport(loc);
+            }
+        });
+    }
+
 
 // Функции для прибавления и вычетания былов.
 // Первые 4 принемают число и команду которой нужно прибвыить,
