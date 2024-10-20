@@ -34,11 +34,7 @@ public class PointCounter {
         }
 
         //телепортируем каждого из них
-        VortexTeam.getTeam(Teams.ofIndex(maxIndex)).getVanilaTeam().getPlayers().forEach((p) -> {
-            if(p.isConnected()){
-                p.getPlayer().teleport(loc);
-            }
-        });
+        VortexTeam.getTeam(Teams.ofIndex(maxIndex)).tpTeam(loc);
     }
 
 

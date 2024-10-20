@@ -2,6 +2,7 @@ package vxteam.plugin.championship.tools;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -22,6 +23,9 @@ public class VortexTeam {
 
     public static VortexTeam getTeam(Teams team) {
         return teams[team.ordinal()];
+    }
+    public static VortexTeam[] getTeams() {
+        return teams;
     }
 
     public static void registerTeams(Championship plg) {
@@ -44,5 +48,13 @@ public class VortexTeam {
     }
     public Team getVanilaTeam() {
         return team_;
+    }
+
+    public void tpTeam(Location loc){
+        team_.getPlayers().forEach((p) -> {
+            if(p.isConnected()){
+                p.getPlayer().teleport(loc);
+            }
+        });
     }
 }

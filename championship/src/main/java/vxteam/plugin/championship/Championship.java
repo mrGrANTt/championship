@@ -12,7 +12,7 @@ public final class Championship extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
 
-        getServer().getPluginManager().registerEvents( new EventSystem(this), this);
+        new EventSystem(this).registerEvents();
         getServer().getLogger().info("Championship's  EventSystem was loaded!");
 
         getServer().getPluginCommand("championship").setExecutor(new CommandSystem(this));
